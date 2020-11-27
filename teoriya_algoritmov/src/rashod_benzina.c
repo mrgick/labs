@@ -42,7 +42,7 @@ first_entry:
 		i=i+1;
 		goto first_entry;
 
-SETDBG;
+//SETDBG;
 
 	//ветка да
 	} else {
