@@ -8,5 +8,5 @@
 ## История создания
 1. Первый прототип написал не я. Привет тебе, если читаешь. Я довёл до ума твой код)
 2. Все задачи делались по блок схеме:
- ![фото:](https://raw.githubusercontent.com/mrgick/labs/main/teoriya_algoritmov/img.jpg "")
+ ![фото:](https://raw.githubusercontent.com/mrgick/labs/main/teoriya_algoritmov/image/img.jpg "")
 
