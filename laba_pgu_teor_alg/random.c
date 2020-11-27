@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctime>
+#include <unistd.h>
 
 //вывод значений массива a[k] (отладка программы)
 #define DEBUG
@@ -19,6 +20,9 @@
 int main(int argc, char* args[]) 
 {
 
+	//число секунд для сна
+        float slp = 1;
+	
 	// устанавливаем значение системных часов в качестве стартового числа
 	srand(static_cast<unsigned int>(time(0)));
 
@@ -76,7 +80,7 @@ third_entry:
 		printf("%.2f\n",CC);
 
 		i=i+1;
-
+		sleep(slp); //пусть поспит чутка, полезно для вашего компьютера)
 //SETDBG;
 
 		// ветка нет
