@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctime>
+#include <ctime>   //если хотите компилировать в си, то закомментируйте эту библиотеку 
 #include <unistd.h>
 
 //вывод значений массива a[k] (отладка программы)
@@ -26,7 +26,7 @@ int main(int argc, char* args[])
         float slp = 1;
 	
 	// устанавливаем значение системных часов в качестве стартового числа
-	srand(static_cast<unsigned int>(time(0)));
+	srand(static_cast<unsigned int>(time(0)));  //если хотите компилировать в си, то закомментируйте эту строку
 
 	// объявление переменных
 	int k = 3;
