@@ -21,7 +21,7 @@ int main(int argc, char* args[])
 {
 
 	// устанавливаем значение системных часов в качестве стартового числа
-	srand(static_cast<unsigned int>(time(0)));
+	srand(static_cast<unsigned int>(time(0)));  //если хотите компилировать в си, то закомментируйте эту строку
 
 	// объявление переменных
 	int k = 3;
