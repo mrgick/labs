@@ -19,6 +19,7 @@ first_entry:
 
 	if (!(i == k-1)){
 		S=S+a[i];
+		printf("Нет данных\n");
 		i=i+1;
 		goto first_entry;
 
