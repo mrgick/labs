@@ -11,7 +11,7 @@ int main()
 	int i = 0;
 	float S = 0;
 	float a[k];
-	float CC = 0;
+	float CC;
 	float sec = 1;
 
 first_entry:	
