@@ -8,6 +8,7 @@ var
 	i,k,j,m: integer;
 
 begin
+	randomize;
 	//заполняем массив псевдорандомными числами
 	for i:=1 to n do
 		arr[i] := random(100);
