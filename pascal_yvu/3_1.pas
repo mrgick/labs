@@ -1,7 +1,7 @@
 program three;
 Uses math;
 var k: integer;
-var s: real;
+    s: real;
 begin
 	s := 0;
     for k := 1 to 30 do
