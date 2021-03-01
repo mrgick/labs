@@ -1,15 +1,12 @@
 program eight;
 Uses Math;
 
-type
-	mas = array[1..4] of real;
+type mas = array[1..4] of real;
 
 const C: mas = (0.85, 1.4, 1.12, 3.24);
 const N: integer = 4;
 
-var 
-
-	X, Y, Z: real;
+var X, Y, Z: real;
 
 Function F(C:mas; N:integer; switch:string; X,Y:real):real;
 	var Fak:real;
@@ -24,11 +21,9 @@ Function F(C:mas; N:integer; switch:string; X,Y:real):real;
 			'Z':Fak:=(C[i]-Y)/power(i,3);
 			end;
 		F:=Fak;
-
 	end;
 
 begin
-
 	X := F(C,N,'X',0,0);
 	Y := F(C,N,'Y',X,0);
 	Z := F(C,N,'Z',X,Y);
