@@ -7,7 +7,7 @@ var X, Y, Z: real;
 
 Function F(C:mas; N:integer; U:real; j:integer):real;
 var Fak:real;
-var i:integer;
+	i:integer;
 begin
 	Fak:=1;
 	for i:=1 to N do
