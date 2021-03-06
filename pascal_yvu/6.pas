@@ -10,6 +10,7 @@ begin
     i := 1;
     while i<6 do begin
 	    //внутренний цикл
+	    l := 1;
 	    j := 1;
 	    while l > E do begin
 	        l := sqrt(sqr(i)+sqr(j))/power(i+j,3.8);
