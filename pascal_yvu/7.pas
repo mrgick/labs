@@ -3,40 +3,60 @@ const n = 10;
 type
 	mas = array [1..n] of real;
 var
-	arr,x: mas;
+	a,old: mas;
 	l:real;
-	i,k,j,m: integer;
+	i,k,j: integer;
 
 begin
+	
+	//рандом
 	randomize;
 	//заполняем массив псевдорандомными числами
 	for i:=1 to n do
-		arr[i] := random(100);
-	//---------------------------
+		a[i] := random(100);
 
-	x[1]:=arr[1];
+	//---------------------------
+	{
+	
+	//ручной ввод
+	for i:=1 to n do
+	begin
+		write('Введите a[',i:2,'] = ');
+		readln(a[i]);
+	end;
+	}
+
+	//для вывода
+	old := a; 
 
 	for i:=2 to n do
 	begin
-		l := arr[i];
-		k := 1;
-		while l<=x[k] do
+		l := a[i];
+		k := i;
+
+		while a[k-1]<l do
 		begin
-			k:=k+1;
+			k:=k-1;
+			//доход до границы
+			if k <= 1 then begin
+   				k:=1;
+   				break;
+ 			end;
 		end;
 
-
- 		//вставка в массив
+		//вставка
 		for j := i-1 downto k do
-		begin
-	        x[j+1] := x[j];
-		end;
-		x[k] := l;    
+	        a[j+1] := a[j];
+		a[k] := l;
 	end;
 	
 	//вывод
-	writeln('First|Second');
+	writeln('┌─────┬───────┬───────┐');
+	writeln('│Номер│  До   │ После │');
+	writeln('├─────┼───────┼───────┤');
     for i := 1 to n do
-        writeln(arr[i]:0:2,'│', x[i]:0:2);
+        writeln('│','a[',i:2,']│ ', old[i]:5:2,' │ ',a[i]:5:2,' │ ');
+    writeln('└─────┴───────┴───────┘');
+	
 end.
 
