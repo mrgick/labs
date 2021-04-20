@@ -97,14 +97,10 @@ procedure write_to_file;
     assign (f, 'file.txt');
     rewrite(f);
     tmp := first;
-    writeln(f, tmp^.data);
-    tmp:=tmp^.next;
-
-    while tmp<>first do
-    begin
+    repeat
       writeln(f, tmp^.data);
       tmp:=tmp^.next
-    end;
+    until tmp=first;
     close(f);
     writeln();
     writeln('Запись в файл осуществлена.');
@@ -140,7 +136,7 @@ begin
       'd': delete;
       'i': insert;
       'w': write_to_file;
-      'h':help;
+      'h': help;
       'e': writeln('Завершение программы.')
         else
       writeln('Неверный ввод. "h" - справка.');
