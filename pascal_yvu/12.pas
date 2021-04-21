@@ -9,7 +9,7 @@ type list=^tlist;
 
 procedure help;
   begin
-    writeln('Меню взаимодействия со списком:');
+    writeln('Справка:');
     writeln('"l" - просмотр влево');
     writeln('"r" - просмотр вправо');
     writeln('"i" - вставить элемент');
@@ -26,14 +26,19 @@ procedure create_list(var n:list);
     readln(n^.data);
   end;
 
+procedure find_first(var n:list);
+  begin
+    while n^.prev <> nil do begin
+      n:=n^.prev;
+    end;
+  end;
+
 procedure print(n:list);
   var tmp:list;
   begin
     new(tmp);
     tmp:=n;
-    while tmp^.prev <> nil do begin
-      tmp:=tmp^.prev;
-    end;
+    find_first(tmp);
 
     while tmp<>nil do
       begin
@@ -104,11 +109,8 @@ procedure write_to_file(n:list);
   begin
     new(tmp);
     tmp:=n;
-    while tmp^.prev <> nil do begin
-      tmp:=tmp^.prev;
-    end;
-
-    assign (f, 'file.txt');
+    find_first(tmp);
+    assign(f, 'file.txt');
     rewrite(f);
     while tmp<>nil do begin
       writeln(f, tmp^.data);
