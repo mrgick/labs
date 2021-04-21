@@ -7,106 +7,6 @@ type list=^tlist;
     prev,next:list;
   end;
 
-var first, { указатель на начало }
-  left,right:list;
-  input:char;
-
-{ процедура сдвига влево }
-procedure go_left; 
-  begin
-    right:=left;
-    left:=right^.prev; { сдвиг указателей }
-    write(left^.data, ' '); { вывод информационного поля }
-    if left=first then
-      writeln; { начало }    
-  end;
-
-{ процедура сдвига вправо }
-procedure go_right; 
-  begin
-    left:=right;
-    right:=left^.next;
-    if left=first then
-      writeln;
-    write(left^.data, ' ');
-  end;
-
-{ процедура удаления }
-procedure delete; 
-  begin
-    writeln();
-    if left^.prev=left^.next then { не менее 2х элементов }
-      writeln('Невозможно удалить - осталось два элемента.')
-    else if left=first then
-      writeln('Невозможно удалить - начало списка.')
-    else begin
-      right^.prev:=left^.prev;  { изменение указателей }
-      left^.prev^.next:=left^.next;
-      writeln('Удалено значение: ',left^.data);
-      dispose(left);    { возвращение памяти }
-      left:=right^.prev;
-    end;
-  end;
-
-{ процедура вставки }
-procedure insert;  
-  var val:integer;
-      node:list;
-  begin
-    writeln();
-    writeln('Введите значение для вставки: ');
-    readln(val);
-    new(node);
-    node^.data:=val;
-    node^.prev:=left;   { связи из нового узла }
-    node^.next:=right;
-    right^.prev:=node;   { указание на новый узел }
-    left^.next:=node;
-    right:=node;
-  end;
-
-{ создание списка }
-procedure create_list; 
-  var x: integer;
-  begin
-    if (right<>nil) or (left<>nil) then begin
-      writeln('Список не пуст. Следовательно, он уже создан.');    
-    end
-    else begin
-      new(right); new(left);
-
-      writeln('Введите первое значение:');
-      readln(x);
-      left^.data:=x;   { первый правый узел }
-      writeln('Введите второе значение:');
-      readln(x);
-      right^.data:=x;   { первый левый узел }
-      right^.prev:=left;
-      right^.next:=left;
-      left^.prev:=right;
-      left^.next:=right;
-      first:=left;
-    end;
-  end;
-
-{ запись в файл }
-procedure write_to_file;
-  var f: text;
-      tmp:list;
-  begin
-    assign (f, 'file.txt');
-    rewrite(f);
-    tmp := first;
-    repeat
-      writeln(f, tmp^.data);
-      tmp:=tmp^.next
-    until tmp=first;
-    close(f);
-    writeln();
-    writeln('Запись в файл осуществлена.');
-  end;
-
-{ вывод меню }
 procedure help;
   begin
     writeln('Меню взаимодействия со списком:');
@@ -119,6 +19,108 @@ procedure help;
     writeln('"e" - выход из программы');
   end;
 
+procedure create_list(var n:list);
+  begin
+    new(n);
+    write('Введите первое значение для списка: ');
+    readln(n^.data);
+  end;
+
+procedure print(n:list);
+  var tmp:list;
+  begin
+    new(tmp);
+    tmp:=n;
+    while tmp^.prev <> nil do begin
+      tmp:=tmp^.prev;
+    end;
+
+    while tmp<>nil do
+      begin
+      write(tmp^.data,' ');
+      if tmp = n then write('| ');
+      tmp:=tmp^.next;
+    end;
+    dispose(tmp);
+    writeln();
+  end;
+
+procedure insert(var n:list); 
+  var node:list;
+      x:integer;
+  begin
+    write('Введите значение: ');
+    readln(x);
+    new(node);
+    node^.next:=n^.next;
+    node^.prev:=n;
+    node^.data:=x;
+    n^.next:=node;
+    n:=node;
+  end;
+
+procedure delete(var n:list); 
+  begin
+    if (n^.prev=nil) and (n^.next=nil) then begin
+      writeln('Список пуст');
+      create_list(n);
+    end
+    else begin
+    if n^.prev=nil then begin
+      n:=n^.next;
+      n^.prev:=nil;
+    end
+    else if n^.next=nil then begin
+      n:=n^.prev;
+      n^.next:=nil;
+    end 
+    else begin
+      n^.next^.prev:=n^.prev;
+      n^.prev^.next:=n^.next;
+      n:=n^.prev;
+    end;
+    end;
+  end;
+
+procedure go_right(var n:list);
+  begin
+    if n^.next=nil then writeln('Конец списка')
+    else begin
+      n:=n^.next;
+    end;
+  end;
+
+procedure go_left(var n:list);
+  begin
+    if n^.prev=nil then writeln('Начало списка')
+    else begin
+      n:=n^.prev;
+    end;
+  end;
+
+procedure write_to_file(n:list);
+  var f: text;
+      tmp:list;
+  begin
+    new(tmp);
+    tmp:=n;
+    while tmp^.prev <> nil do begin
+      tmp:=tmp^.prev;
+    end;
+
+    assign (f, 'file.txt');
+    rewrite(f);
+    while tmp<>nil do begin
+      writeln(f, tmp^.data);
+      tmp:=tmp^.next;
+    end;
+    dispose(tmp);
+    close(f);
+    writeln('Запись в файл осуществлена.');
+  end;
+
+var n:list;
+input:char;
 
 begin
   writeln('Для начала вам нужно создать список.');
@@ -126,16 +128,17 @@ begin
   if ReadKey <> 'c' then exit
   else
   writeln('Происходит создание списка.');
-  create_list;
+  create_list(n);
   help;
   repeat
+    print(n);
     input:=ReadKey;
     case input of
-      'l': go_left;
-      'r': go_right;
-      'd': delete;
-      'i': insert;
-      'w': write_to_file;
+      'l': go_left(n);
+      'r': go_right(n);
+      'd': delete(n);
+      'i': insert(n);
+      'w': write_to_file(n);
       'h': help;
       'e': writeln('Завершение программы.')
         else
