@@ -46,6 +46,7 @@ procedure print(n:list);
       if tmp = n then write('| ');
       tmp:=tmp^.next;
     end;
+    
     dispose(tmp);
     writeln();
   end;
@@ -60,6 +61,7 @@ procedure insert(var n:list);
     node^.next:=n^.next;
     node^.prev:=n;
     node^.data:=x;
+    if n^.next<>nil then n^.next^.prev:=node;
     n^.next:=node;
     n:=node;
   end;
@@ -71,19 +73,19 @@ procedure delete(var n:list);
       create_list(n);
     end
     else begin
-    if n^.prev=nil then begin
-      n:=n^.next;
-      n^.prev:=nil;
-    end
-    else if n^.next=nil then begin
-      n:=n^.prev;
-      n^.next:=nil;
-    end 
-    else begin
-      n^.next^.prev:=n^.prev;
-      n^.prev^.next:=n^.next;
-      n:=n^.prev;
-    end;
+      if n^.prev=nil then begin
+        n:=n^.next;
+        n^.prev:=nil;
+      end
+      else if n^.next=nil then begin
+        n:=n^.prev;
+        n^.next:=nil;
+      end 
+      else begin
+        n^.next^.prev:=n^.prev;
+        n^.prev^.next:=n^.next;
+        n:=n^.prev;
+      end;
     end;
   end;
 
