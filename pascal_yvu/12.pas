@@ -6,7 +6,7 @@ type list=^tlist;
     data:integer;
     prev,next:list;
   end;
-
+ 
 procedure help;
   begin
     writeln('Справка:');
@@ -18,39 +18,37 @@ procedure help;
     writeln('"h" - справка');
     writeln('"e" - выход из программы');
   end;
-
+ 
 procedure create_list(var n:list);
   begin
     new(n);
     write('Введите первое значение для списка: ');
     readln(n^.data);
   end;
-
+ 
 procedure find_first(var n:list);
   begin
     while n^.prev <> nil do begin
       n:=n^.prev;
     end;
   end;
-
+ 
 procedure print(n:list);
   var tmp:list;
   begin
-    new(tmp);
     tmp:=n;
     find_first(tmp);
-
+ 
     while tmp<>nil do
       begin
       write(tmp^.data,' ');
       if tmp = n then write('| ');
       tmp:=tmp^.next;
     end;
-    
-    dispose(tmp);
+ 
     writeln();
   end;
-
+ 
 procedure insert(var n:list); 
   var node:list;
       x:integer;
@@ -65,30 +63,36 @@ procedure insert(var n:list);
     n^.next:=node;
     n:=node;
   end;
-
+ 
 procedure delete(var n:list); 
+var tmp:list;
   begin
     if (n^.prev=nil) and (n^.next=nil) then begin
+      dispose(n);
       writeln('Список пуст');
       create_list(n);
     end
     else begin
       if n^.prev=nil then begin
         n:=n^.next;
+       dispose(n^.prev);
         n^.prev:=nil;
       end
       else if n^.next=nil then begin
         n:=n^.prev;
+       dispose(n^.next);
         n^.next:=nil;
       end 
       else begin
+       tmp:=n;
         n^.next^.prev:=n^.prev;
         n^.prev^.next:=n^.next;
         n:=n^.prev;
+        dispose(tmp);
       end;
     end;
   end;
-
+ 
 procedure go_right(var n:list);
   begin
     if n^.next=nil then writeln('Конец списка')
@@ -96,7 +100,7 @@ procedure go_right(var n:list);
       n:=n^.next;
     end;
   end;
-
+ 
 procedure go_left(var n:list);
   begin
     if n^.prev=nil then writeln('Начало списка')
@@ -104,12 +108,11 @@ procedure go_left(var n:list);
       n:=n^.prev;
     end;
   end;
-
+ 
 procedure write_to_file(n:list);
   var f: text;
       tmp:list;
   begin
-    new(tmp);
     tmp:=n;
     find_first(tmp);
     assign(f, 'file.txt');
@@ -118,11 +121,10 @@ procedure write_to_file(n:list);
       writeln(f, tmp^.data);
       tmp:=tmp^.next;
     end;
-    dispose(tmp);
     close(f);
     writeln('Запись в файл осуществлена.');
   end;
-
+ 
 var n:list;
 input:char;
 
