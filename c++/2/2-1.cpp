@@ -11,12 +11,12 @@ int main()
     cin >> c;
 
     if (a==0 || b==0 || c==0){
-		cout << "false";
+		cout << "false\n";
 		return 0;
 	}
 
     if (a<0 || b<0 || c<0){
-		cout << "Negative!";
+		cout << "Negative!\n";
 		return 0;
 	}
 
@@ -27,6 +27,6 @@ int main()
         cout << "false\n";
     }
 
-    cin.get();
+    cin.ignore().get();
     return 0;
 }
