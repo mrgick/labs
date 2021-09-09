@@ -13,5 +13,6 @@ int main() {
 		printf("│%3d│%10.6lf│\n", f, c);
 	}
     printf("└───┴──────────┘\n");
-
+    
+    return 0;
 }
