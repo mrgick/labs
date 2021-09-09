@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <cmath>
 
 int main() {
     int counter = 0;
