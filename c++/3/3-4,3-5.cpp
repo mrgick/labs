@@ -9,4 +9,5 @@ int main() {
     scanf("%lf %d", &x, &n);
     xn = pow(x, n);
 	printf("x^n = %llf\n", xn);
+    return 0;
 }
