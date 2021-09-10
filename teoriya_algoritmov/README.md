@@ -8,7 +8,7 @@
 4. запускаем ./test
 * Либо можно воспользоваться онлайн компилятором, к примеру -> https://www.onlinegdb.com/online_c++_compiler
 ## История создания
-1. Первый прототип написал не я. Привет тебе, если читаешь. Я довёл до ума твой код)
+1. Первый прототип написал не я, а [moLIart](https://github.com/moLIart).
 2. Все задачи делались по блок схеме:
  ![фото:](https://raw.githubusercontent.com/mrgick/labs/main/teoriya_algoritmov/image/img.jpg "")
 
