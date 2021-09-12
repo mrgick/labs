@@ -1,44 +1,60 @@
+var myChart
+
 function Graphic() {
     var ctx = document.getElementById('myChart');
-    var myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: [],
             datasets: [{
-                label: "sin(x)",
-                data: [],
+                label: "x^2",
+                data: get_data(-6, 6, 1, 'x^2'),
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 borderWidth: 1
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+            //responsive: false
         }
-    });
-    
-    //TODO: привести в порядок код
-    //TODO: вынести настройку в html форму
-    //TODO: добавить цвета и чтоб норм выглядело :D
-    
-    x_start = -6
-    //y_start = -100
-    x_end = 6
-    //y_end = 100
-    step = 1
-    
-    function f(x) {
-        return Math.pow(x, 2);
+    })
+
+}
+
+function get_data(x_start, x_end, step, math_formula) {
+
+    var data = []
+
+    for (var x = x_start; x <= x_end; x += step) {
+        data.push({
+            x: '' + x.toFixed(2),
+            y: '' + math.parse(math_formula).compile().evaluate({ x: x }).toFixed(2)
+        })
+    }
+    return data
+}
+
+function add_graphic() {
+
+    var math_formula = 'sin(x)'
+    var x_start = -6
+    var x_end = 6
+    var step = 1
+    var color = 'rgb(43, 99, 132)'
+
+
+    var dataset = {
+        label: math_formula,
+        data: get_data(x_start, x_end, step, math_formula),
+        backgroundColor: color,
+        borderColor: color,
+        borderWidth: 1
     }
 
-    for (var x = x_start; x<=x_end; x+=step) {
-        myChart.data.labels.push(''+x.toFixed(2));
-        myChart.data.datasets[0].data.push(''+f(x).toFixed(2));
-       }
-
-    myChart.update();
+    myChart.data.datasets.push(dataset)
+    myChart.update()
 }
+
+
+
+window.addEventListener("load", Graphic)

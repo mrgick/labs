@@ -1,40 +1,24 @@
-<!-- <!DOCTYPE HTML>
-
-<div>
-    <canvas id="myChart"></canvas>
-</div>
-<script type="text/javascript" src="libs/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="libs/chart.js"></script>
-<script type="text/javascript" src="libs/chart.js"></script>
-
-
- 
-
-<noscript>
- <div align="center">
-  Извините, для работы приложения нужен включённый Javascript
- </div>
-</noscript>
--->
-
 <!DOCTYPE HTML>
 <html>
- <head>
-  <meta charset="utf-8">
-  <title>Graphic</title>
-  <script type="text/javascript" src="libs/chart.js"></script>
-  <script type="text/javascript" src="libs/chart.js"></script>
-  <script type="text/javascript" src="graphic.js"></script>
- </head>
- <body>
 
- <div>
-  <form>
-  </form>
-  <button onclick="Graphic()">Построить</button>
- </div>
- <div>
-  <canvas id="myChart" width="400" height="400">Your browser does not support the canvas element.</canvas>
- </div>
- </body>
+<head>
+    <meta charset="utf-8">
+    <title>Graphic</title>
+    <script type="text/javascript" src="libs/chart.js"></script>
+    <script type="text/javascript" src="libs/math.js"></script>
+    <script type="text/javascript" src="graphic.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <form>
+        </form>
+        <button onclick="add_graphic()">Построить</button>
+    </div>
+    <div>
+        <canvas id="myChart">Your browser does not support the canvas element.</canvas>
+    </div>
+</body>
+
 </html>
