@@ -6,15 +6,15 @@ def φ(x):
 
 
 def main():
-    x = 2
+    Δ = 2
+    x = 3
     ε = 10**(-5)
 
-    while True:
-        Δ = φ(x)
-        if abs(x-Δ) < ε:
-            break
+    while not (abs(x-Δ) < ε):
         x = Δ
-        print(x, Δ)
+        Δ = φ(x)
+    
+    print('{:.6}'.format(x))
 
 
 if __name__ == "__main__":
