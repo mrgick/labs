@@ -1,10 +1,6 @@
 import math
 
 
-def φ(x):
-    return x + 2*(math.log(x)-x+1.8)
-
-
 def main():
     Δ = 2
     x = 3
@@ -12,7 +8,7 @@ def main():
 
     while not (abs(x-Δ) < ε):
         x = Δ
-        Δ = φ(x)
+        Δ = x + 2*(math.log(x)-x+1.8)
     
     print('{:.6}'.format(x))
 
