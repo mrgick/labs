@@ -10,7 +10,7 @@ def main():
         x = Δ
         Δ = x + 2*(math.log(x)-x+1.8)
     
-    print('{:.6}'.format(x))
+    print(f"{x:.{7}f}")
 
 
 if __name__ == "__main__":
