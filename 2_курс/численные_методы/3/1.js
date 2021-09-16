@@ -3,12 +3,12 @@ function f(x) {
 }
 
 
-function method_rectangles(a, n, h, t=0) {
+function method_rectangles(a, n, h, t = 0) {
     let sum, Δ, I
-    
+
     switch (t) {
         case 1:
-            Δ = h/2
+            Δ = h / 2
             break;
         case 2:
             Δ = h
