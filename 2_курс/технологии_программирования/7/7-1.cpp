@@ -23,7 +23,6 @@ bool is_consonant(int j)
 
 int main()
 {
-    std::string vowels = "aeouiAEOUI";
     std::string text;
     std::getline(std::cin, text);
     std::cout << "Vowels:" << count_if(text.begin(), text.end(), is_vowel) << "\n";
