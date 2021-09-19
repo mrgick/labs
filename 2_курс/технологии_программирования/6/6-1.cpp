@@ -2,71 +2,94 @@
 #include <cstdlib>
 #include <ctime>
 
-int main()
+struct array_peaks
 {
-    srand(time(0));
-    int arr[10];
+    int min_i;
+    int max_i;
+};
 
-    // Пункт а
-    printf("arr = [");
-    for (int i = 0; i < 10; i++)
+void fill_array(int array[], const int array_length,
+                int start, int end)
+{
+    for (int i = 0; i < array_length; i++)
     {
-        arr[i] = -30 + (rand() % 61);
-        printf("%d", arr[i]);
-        if (i != 9)
+        array[i] = start + (rand() % (abs(start) + end + 1));
+    }
+}
+
+void print_array(int array[], const int array_length)
+{
+    printf("array = [");
+    for (int i = 0; i < array_length; i++)
+    {
+        printf("%d", array[i]);
+        if (i != array_length - 1)
         {
             printf(", ");
         }
     }
     printf("]\n");
+}
 
-    // Пункт б
+void count_positive_negative(int array[], const int array_length)
+{
     int positive = 0, negative = 0;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < array_length; i++)
     {
-        if (arr[i] > 0)
+        if (array[i] > 0)
         {
             positive++;
         }
-        else if (arr[i] < 0)
+        else if (array[i] < 0)
         {
             negative++;
         }
     }
     printf("positive: %d; negative: %d\n", positive, negative);
+}
 
-    // Пункт в
-    int sum = 0;
+void count_average_nearest(int array[], const int array_length)
+{
+    int sum = 0, nearest = array[0];
     double average;
-    for (int i = 0; i < 10; i++)
+
+    for (int i = 0; i < array_length; i++)
     {
-        sum += arr[i];
+        sum += array[i];
     }
-    average = sum / 10;
-    int nearest = arr[0];
-    for (int i = 0; i < 10; i++)
+    average = sum / array_length;
+
+    for (int i = 0; i < array_length; i++)
     {
-        if (abs(average - arr[i]) < abs(average - nearest))
+        if (abs(average - array[i]) < abs(average - nearest))
         {
-            nearest = arr[i];
+            nearest = array[i];
         }
     }
     printf("average: %.2lf; nearest: %d\n", average, nearest);
+}
 
-    // Пункт г
+array_peaks find_max_min_index(int array[], const int array_length)
+{
     int max_i = 0, min_i = 0;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < array_length; i++)
     {
-        if (arr[i] > arr[max_i])
+        if (array[i] > array[max_i])
         {
             max_i = i;
         }
-        if (arr[i] < arr[min_i])
+        if (array[i] < array[min_i])
         {
             min_i = i;
         }
     }
-    sum = 0;
+    return {min_i, max_i};
+}
+
+void count_sum_between_min_max(int array[], const int array_length,
+                               const int min_i, const int max_i)
+{
+    int sum = 0;
     int start, end;
     if (max_i < min_i)
     {
@@ -80,46 +103,72 @@ int main()
     }
     for (int i = start + 1; i < end; i++)
     {
-        sum += arr[i];
+        sum += array[i];
     }
-    printf("min: %d; max: %d; sum_between: %d\n", arr[min_i], arr[max_i], sum);
+    printf("min: %d; max: %d; sum_between: %d\n",
+           array[min_i], array[max_i], sum);
+}
 
-    // Пункт д
-    int min_left = arr[min_i],
-        center = 0,
-        max_right = arr[max_i];
-    //printf("%d %d %d\n", min_left, center, max_right);
-    
-    printf("histogram:\n");
-    
-    for (int i = 0; i < 10; i++)
+void print_histogram(int array[], const int array_length,
+                     const int min_i, const int max_i)
+{
+    int count;
+    const int min_left = array[min_i],
+              max_right = array[max_i],
+              center = 0;
+    const char space[] = "                               ",
+               star[] = "*******************************";
+
+    printf("%.*s histogram\n", (abs(min_left) - 5), space);
+
+    for (int i = 0; i < array_length; i++)
     {
-        //printf("%d\n", arr[i]);
-        if (arr[i] < 0)
+        if (array[i] < 0)
         {
-            for (int z = min_left; z < arr[i]; z++)
+            count = abs(array[i] - min_left);
+            if (count != 0)
             {
-                printf(" ");
+                printf("%.*s", count, space);
             }
-            for (int z = arr[i]; z < center; z++)
-            {
-                printf("*");
-            }
-            printf("|");
+            count = abs(array[i] - center);
+            printf("%.*s|", count, star);
         }
-        else{
-            for (int z = min_left; z < center; z++)
+        else
+        {
+            count = abs(center - min_left);
+            printf("%.*s|", count, space);
+            count = abs(array[i] - center);
+            if (count != 0)
             {
-                printf(" ");
-            }
-            printf("|");
-            for (int z = center; z < arr[i]; z++)
-            {
-                printf("*");
+                printf("%.*s", count, star);
             }
         }
         printf("\n");
     }
+}
+
+int main()
+{
+    srand(time(0));
+    const int n = 10;
+    int arr[n];
+
+    // Пункт а
+    fill_array(arr, n, -30, 30);
+    print_array(arr, n);
+
+    // Пункт б
+    count_positive_negative(arr, n);
+
+    // Пункт в
+    count_average_nearest(arr, n);
+
+    // Пункт г
+    array_peaks arr_peaks = find_max_min_index(arr, n);
+    count_sum_between_min_max(arr, n, arr_peaks.min_i, arr_peaks.max_i);
+
+    // Пункт д
+    print_histogram(arr, n, arr_peaks.min_i, arr_peaks.max_i);
 
     return 0;
 }
