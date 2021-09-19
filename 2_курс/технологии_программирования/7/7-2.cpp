@@ -28,7 +28,9 @@ int main()
                  consonant = L"бвгджзйклмнпрстфхцчшщБВГДЖЗЙКЛМНПРСТФХЦЧШЩ",
                  lower = L"абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
                  upper = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    
     setlocale(LC_ALL, "ru_RU.UTF-8");
+    
     std::wstring text;
     std::getline(std::wcin, text);
 
