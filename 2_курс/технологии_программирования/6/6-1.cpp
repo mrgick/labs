@@ -109,39 +109,43 @@ void count_sum_between_min_max(int array[], const int array_length,
            array[min_i], array[max_i], sum);
 }
 
-void print_histogram(int array[], const int array_length,
-                     const int min_i, const int max_i)
+void print_repeated(const char *c, int count)
 {
-    int count;
-    const int min_left = array[min_i],
-              max_right = array[max_i],
-              center = 0;
-    const char space[] = "                               ",
-               star[] = "*******************************";
+    for (int i = 0; i < count; i++)
+    {
+        printf("%c", *c);
+    }
+}
 
-    printf("%.*s histogram\n", (abs(min_left) - 5), space);
+void print_histogram(int array[], const int array_length,
+                     const int min, const int max, const int console_size)
+{
+    const int center = console_size / 2 - 1,
+              min_left = center - abs(min),
+              max_right = center + abs(max);
+    const char space[] = " ",
+               star[] = "*";
+    int count;
+
+    print_repeated(space, center - 4);
+    printf("histogram\n");
 
     for (int i = 0; i < array_length; i++)
     {
         if (array[i] < 0)
         {
-            count = abs(array[i] - min_left);
-            if (count != 0)
-            {
-                printf("%.*s", count, space);
-            }
-            count = abs(array[i] - center);
-            printf("%.*s|", count, star);
+            count = min_left + abs(array[i] - min);
+            print_repeated(space, count);
+            count = abs(array[i]);
+            print_repeated(star, count);
+            printf("|");
         }
         else
         {
-            count = abs(center - min_left);
-            printf("%.*s|", count, space);
-            count = abs(array[i] - center);
-            if (count != 0)
-            {
-                printf("%.*s", count, star);
-            }
+            print_repeated(space, center);
+            printf("|");
+            count = abs(array[i]);
+            print_repeated(star, count);
         }
         printf("\n");
     }
@@ -150,7 +154,8 @@ void print_histogram(int array[], const int array_length,
 int main()
 {
     srand(time(0));
-    const int n = 10;
+    const int n = 10,
+              console_size = 80;
     int arr[n];
 
     // Пункт а
@@ -168,7 +173,8 @@ int main()
     count_sum_between_min_max(arr, n, arr_peaks.min_i, arr_peaks.max_i);
 
     // Пункт д
-    print_histogram(arr, n, arr_peaks.min_i, arr_peaks.max_i);
+    print_histogram(arr, n, arr[arr_peaks.min_i],
+                    arr[arr_peaks.max_i], console_size);
 
     return 0;
 }
