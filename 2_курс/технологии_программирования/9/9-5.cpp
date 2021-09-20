@@ -6,7 +6,7 @@ int main()
     std::ifstream f1;
     std::ofstream f2;
     f1.open("test1.txt", std::ios::binary);
-    f2.open("test2.txt", std::ios::binary);
+    f2.open("test2.out", std::ios::binary);
     char tmp1, tmp2;
     bool tmp2_is_empty = true;
 
@@ -29,10 +29,6 @@ int main()
         {
             tmp2 = ' ';
             continue;
-        }
-        else if (tmp1 != ' ' and tmp2 == ' ')
-        {
-            f2 << tmp1;
         }
         else if (tmp1 == '\t')
         {
