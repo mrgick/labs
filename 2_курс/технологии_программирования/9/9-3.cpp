@@ -32,7 +32,6 @@ int main()
     f1.open("test1.txt", std::ios::binary);
 
     std::string word, longest = std::string();
-    char tmp;
 
     while (!f1.eof())
     {
