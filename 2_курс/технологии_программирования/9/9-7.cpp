@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 
 struct word
 {
@@ -39,14 +40,26 @@ word find_next_word(std::ifstream &file)
 int main()
 {
     std::ifstream f1;
-    std::ofstream f2;
+    std::ifstream f2;
+    std::ofstream f3;
+
     f1.open("test1.txt", std::ios::binary);
     f2.open("test2.txt", std::ios::binary);
+    f3.open("test2.out");
 
+    word word1, word2;
 
+    while (true)
+    {
+        word1 = find_next_word(f1);
+        word2 = find_next_word(f2);
+        f3 << word1.self << ' ' << word2.self << '\n';
+        if (word1.self == std::string() and word2.self == std::string())
+            break;
+    }
 
     f1.close();
     f2.close();
-
+    f3.close();
     return 0;
 }
