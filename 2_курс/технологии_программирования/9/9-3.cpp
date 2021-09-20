@@ -14,7 +14,7 @@ std::string find_next_word(std::ifstream &file)
 
         file.get(tmp);
 
-        if (isalpha(tmp) or isdigit(tmp))
+        if (isalpha(tmp) or isdigit(tmp) or tmp == '\'' or tmp == '-')
         {
             word += tmp;
         }
