@@ -1,4 +1,3 @@
-#include <iostream>
 #include <fstream>
 
 struct word
@@ -52,6 +51,9 @@ int main()
         word2 = find_next_word(f1);
         f2 << word2.self + word1.other + word1.self + word2.other;
     }
+
+    f1.close();
+    f2.close();
 
     return 0;
 }
