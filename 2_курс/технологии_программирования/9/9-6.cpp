@@ -26,7 +26,7 @@ int main()
 {
     std::ifstream f1("test1.txt");
     std::ifstream f2("test2.txt");
-    std::ofstream f3("test3.out");
+    std::ofstream f3("test2.out");
     int counter = 1;
     std::cout << "Starting copying.\n"; 
     copy_from_file_to_file(f1, f3, &counter);
