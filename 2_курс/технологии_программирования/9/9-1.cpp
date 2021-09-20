@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream> 
-#include <cstring>
 
 /*
 Использую getline, чтобы не было скопировано два раза
@@ -13,7 +12,6 @@ int main()
 	std::cin >> filename;
     std::ifstream f1("test1.txt");
     std::ofstream f2(filename);
-    char ch;
     char input_line[81];
 	while (f1.getline(input_line, 80)) {
 		f2 << input_line << std::endl;
