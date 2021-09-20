@@ -1,5 +1,4 @@
 #include "stdio.h"
-#include <limits>
 
 int fib(int n)
 {
@@ -41,13 +40,12 @@ int fib_rec(int n)
 
 void cout_max_fib_n_in_int()
 {
-    int imax = std::numeric_limits<int>::max();
-    printf("Max int = %d\n", imax);
-    long int f1 = 0,
-             f2 = 1,
-             fn = 1,
-             n = 1;
-    while (fn < imax)
+    // p.s. max int is 2147483647
+    int f1 = 0,
+        f2 = 1,
+        fn = 1,
+        n = 1;
+    while (fn > 0)
     {
         fn = f1 + f2;
         f1 = f2;
