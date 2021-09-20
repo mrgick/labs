@@ -8,9 +8,8 @@
 
 int main()
 {
-    char filename[] = "test2.txt";
-    //std::cin >> filename;
-    //filename = ;
+    char filename[30];
+    std::cin >> filename;
     std::ifstream f1("test1.txt");
     std::ofstream f2(filename);
     char tmp;
