@@ -39,6 +39,7 @@ word find_next_word(std::ifstream &file)
 
 int main()
 {
+    
     std::ifstream f1;
     std::ifstream f2;
     std::ofstream f3;
