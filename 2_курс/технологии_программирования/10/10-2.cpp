@@ -73,8 +73,8 @@ void print_element(T t, const int &width, char d, const char separator = ' ')
 }
 
 template <typename C>
-void print_price_element(std::string name, std::string shop, C cost, 
-                        int w_n = 21, int w_s = 13, int w_c = 6)
+void print_price_element(std::string name, std::string shop, C cost,
+                         int w_n = 21, int w_s = 13, int w_c = 6)
 {
     std::cout << "|";
     print_element(name, w_n, '|');
@@ -83,7 +83,8 @@ void print_price_element(std::string name, std::string shop, C cost,
     std::cout << "\n";
 }
 
-void print_hor_sep(int width = 44){
+void print_hor_sep(int width = 44)
+{
     print_element('-', width, '\n', '-');
 }
 
@@ -96,15 +97,14 @@ void print_list(std::vector<PRICE> &list, const char *table_name, int bigger = 0
     print_hor_sep();
     for (int i = 0; i < list.size(); ++i)
     {
-        if (bigger == 0 or list[i].cost > bigger){
+        if (bigger == 0 or list[i].cost > bigger)
+        {
             print_price_element(list[i].name, list[i].shop, list[i].cost);
         }
     }
     print_hor_sep();
     std::cout << "\n";
 }
-
-
 
 int main()
 {
