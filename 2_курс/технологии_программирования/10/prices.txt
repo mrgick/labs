@@ -1,0 +1,10 @@
+pikachu:pockemon_shop:1100
+reg:abyss_shop:1500
+kuroneko:trigun_shop:10
+death_note:god_shop:999999
+cupids_chocolate_cake:god_shop:1470
+blue_planet:hunter_shop:81081
+breath_of_archangel:hunter_shop:17017
+time_machine:steins_shop:2011
+time_machine_stuff:rick_shop:673
+onepunchs_costume:onepunch_shop:100
