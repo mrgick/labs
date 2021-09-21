@@ -10,5 +10,4 @@
 ## История создания
 1. Первый прототип написал не я, а [moLIart](https://github.com/moLIart).
 2. Все задачи делались по блок схеме:
- ![фото:](https://raw.githubusercontent.com/mrgick/labs/main/teoriya_algoritmov/image/img.jpg "")
-
+ ![фото:](https://github.com/mrgick/labs/blob/main/1_курс/теория_алгоритмов/image/img.jpg "")
