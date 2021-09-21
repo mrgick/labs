@@ -17,7 +17,6 @@ struct Elem
 vector<Elem> list; // Динамический массив структур
 
 // Функция сравнения двух элементов структур
-// по убыванию значения поля cnt (для sort())
 bool cmp_by_cnt(const Elem &lh, const Elem &rh)
 {
     if (lh.cnt == rh.cnt)
