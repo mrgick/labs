@@ -29,16 +29,23 @@ function Graphic() {
 }
 
 function get_data(x_start, x_end, step, math_formula) {
+    try {
+        var expression = math.parse(math_formula).compile()
+        var data = []
 
-    var data = []
-
-    for (var x = x_start; x <= x_end; x += step) {
-        data.push({
-            x: '' + x.toFixed(2),
-            y: '' + math.parse(math_formula).compile().evaluate({ x: x }).toFixed(2)
-        })
+        for (var x = x_start; x <= x_end; x += step) {
+            y = expression.evaluate({ x: x })
+            data.push({
+                x: '' + x.toFixed(2),
+                y: '' + (+y).toFixed(2)
+            })
+        }
+        return data
     }
-    return data
+    catch (err) {
+        console.error(err)
+        alert(err)
+    }
 }
 
 function add_graphic() {
