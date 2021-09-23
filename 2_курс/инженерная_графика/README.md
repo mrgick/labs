@@ -1,0 +1,1 @@
+делал по лабам из [файла](https://disk.yandex.ru/d/4rr0LE6e1ntmuw)
