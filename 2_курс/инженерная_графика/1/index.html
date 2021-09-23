@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title>Graphic</title>
-    <script type="text/javascript" src="libs/chart.js"></script>
-    <script type="text/javascript" src="libs/math.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="graphic.js"></script>
 </head>
 
@@ -13,6 +14,20 @@
 
     <div>
         <form>
+            <div>
+                <label> Enter math formula:</label>
+                <input type="text" name="math_formula" value="x^2">
+            </div>
+            <div>
+                <label> Enter x start, end, step:</label>
+                <input type="number" name="x_start" value="-10">
+                <input type="number" name="x_end" value="10">
+                <input type="number" name="x_step" value="1" step="1" min="1">
+            </div>
+                <label> Enter color:</label>
+                <input type="color"  name="graphic_color">
+            </div>
+
         </form>
         <button onclick="add_graphic()">Построить</button>
     </div>
