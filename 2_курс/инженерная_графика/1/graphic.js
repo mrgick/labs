@@ -7,10 +7,17 @@ function Graphic() {
         data: {
             labels: [],
             datasets: [{
-                label: "x^2",
-                data: get_data(-10, 10, 1, 'x^2'),
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                label: "log(x,e)",
+                data: get_data(1, 20, 0.5, 'log(x,e)'),
+                backgroundColor: '#FF0000',
+                borderColor: '#FF0000',
+                borderWidth: 1
+            },
+            {
+                label: "log(x,10)",
+                data: get_data(1, 20, 0.5, 'log(x,10)'),
+                backgroundColor: '#4100FF',
+                borderColor: '#4100FF',
                 borderWidth: 1
             }]
         },
@@ -44,15 +51,16 @@ function add_graphic() {
 
         console.log(data)
         var math_formula = data["math_formula"]
-        var x_start = parseInt(data["x_start"], 10)
-        var x_end = parseInt(data["x_end"], 10)
-        var step = parseInt(data["x_step"], 10)
+        var x_start = parseFloat(data["x_start"], 10)
+        var x_end = parseFloat(data["x_end"], 10)
+        var step = parseFloat(data["x_step"], 10)
         var color = data["graphic_color"]
 
+        var x_y = get_data(x_start, x_end, step, math_formula)
 
         var dataset = {
             label: math_formula,
-            data: get_data(x_start, x_end, step, math_formula),
+            data: x_y,
             backgroundColor: color,
             borderColor: color,
             borderWidth: 1
@@ -67,7 +75,28 @@ function add_graphic() {
     }
 }
 
+function remove_last() {
+    try {
+        myChart.data.datasets.pop()
+        myChart.update()
+    }
+    catch (err) {
+        console.error(err)
+        alert(err)
+    }
+}
 
+function remove_graphics() {
+    try {
+        myChart.data.datasets = []
+        myChart.data.labels = []
+        myChart.update()
+    }
+    catch (err) {
+        console.error(err)
+        alert(err)
+    }
+}
 
 
 window.addEventListener("load", Graphic)
