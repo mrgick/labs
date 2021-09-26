@@ -33,7 +33,7 @@ function sympson(b, e) {
 function main() {
     let a = 0.2,
         b = 8,
-        e = 0.01
+        e = 0.001
 
     let i = 0,
         x
