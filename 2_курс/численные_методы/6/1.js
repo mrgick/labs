@@ -7,7 +7,7 @@ function main() {
     ]
     b = [64, 54, 65, 33]
 
-    n = 4
+    const n = 4
 
     for (let s = 0; s < n - 1; s++) {
 
@@ -26,9 +26,10 @@ function main() {
     }
 
     let x = [0, 0, 0, 0]
-    for (let s = n - 1; s >= 0; s--) {
+    
+    x[n - 1] = b[n - 1] / a[n - 1][n - 1]
 
-        x[n - 1] = b[n - 1] / a[n - 1][n - 1]
+    for (let s = n - 2; s >= 0; s--) {
 
         let sum = 0
         for (let k = s + 1; k < n; k++) {
@@ -38,7 +39,6 @@ function main() {
         x[s] = b[s] - sum
     }
 
-    console.log(x);
+    console.log(x)
 }
-
 main()
