@@ -1,0 +1,44 @@
+function main() {
+    a = [
+        [28, 7, 75, 89],
+        [9, 28, 98, 40],
+        [70, 43, 76, 35],
+        [43, 3, 37, 87]
+    ]
+    b = [64, 54, 65, 33]
+
+    n = 4
+
+    for (let s = 0; s < n - 1; s++) {
+
+        for (let j = s + 1; j < n; j++) {
+            a[s][j] = a[s][j] / a[s][s]
+        }
+
+        b[s] = b[s] / a[s][s]
+
+        for (let i = s + 1; i < n; i++) {
+            for (let j = s + 1; j < n; j++) {
+                a[i][j] = a[i][j] - a[i][s] * a[s][j]
+            }
+            b[i] = b[i] - b[s] * a[i][s]
+        }
+    }
+
+    let x = [0, 0, 0, 0]
+    for (let s = n - 1; s >= 0; s--) {
+
+        x[n - 1] = b[n - 1] / a[n - 1][n - 1]
+
+        let sum = 0
+        for (let k = s + 1; k < n; k++) {
+            sum += a[s][k] * x[k]
+        }
+
+        x[s] = b[s] - sum
+    }
+
+    console.log(x);
+}
+
+main()
