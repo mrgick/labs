@@ -22,9 +22,33 @@ function Graphic() {
             }]
         },
         options: {
+            scales: {
+                y: {
+                    title: {
+                    display: true,
+                    align: 'end',
+                    text: 'y'
+                  }
+                },
+                x: {
+                    title: {
+                    display: true,
+                    align: 'end',
+                    text: 'x'
+                  }
+                }
+              }
             //responsive: false
         }
     })
+
+    let canvas = document.getElementById('myChart')
+    let ctx2 = canvas.getContext("2d")
+    ctx.font = "40px arial";
+    //ctx.fillText("Hello world", 10, 50);
+    //ctx.beginPath()
+    //ctx.moveTo(0, y_center)
+
 
 }
 
