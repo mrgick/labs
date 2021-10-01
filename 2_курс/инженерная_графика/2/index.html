@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>lab №2</title>
+    <script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <label> Количество точек:</label>
+            <input type="number" id="dots_number" value="3" step="1" min="3">
+            <button onclick="new_polygon()">Построить</button>
+        </div>
+        <div>
+            <label> Угол поворота</label>
+            <input type="number" id="angle_of_rotation" value="0" step="1">
+            <button onclick="rotate()">Повернуть</button>
+        </div>
+        <div>
+            <input type="checkbox" id="rotate_forever">
+            <label> Постоянное вращение </label>
+        </div>
+        <div>
+            <canvas id="graph" width="402" height="402" style="border:2px solid #000000;">Your browser does not
+                support the canvas element.</canvas>
+        </div>
+</body>
+
+</html>
