@@ -49,23 +49,25 @@ function Graphic() {
 }
 
 function render_arrow() {
-    x = myChart.scales.y.right
-    y = myChart.scales.x.lett
-    console.log(myChart.scales.y);
-    console.log(myChart.scales.x);
+    console.log(myChart.scales.y)
+    console.log(myChart.scales.x)
     ctx2 = myChart.ctx
     ctx2.fillStyle = "#CECECE"
-    ctx2.beginPath();
-    ctx2.moveTo(x, 25);
-    ctx2.lineTo(x+5, 45);
-    ctx2.lineTo(x-5, 45);
-    ctx2.fill();
+    x = myChart.scales.y.right
+    y = myChart.scales.y.top
+    ctx2.beginPath()
+    ctx2.moveTo(x, y-10)
+    ctx2.lineTo(x+5, y)
+    ctx2.lineTo(x-5, y)
+    ctx2.fill()
     ctx2.closePath()
-    ctx2.beginPath();
-    ctx2.moveTo(1000, 931);
-    ctx2.lineTo(980, 926);
-    ctx2.lineTo(980, 937);
-    ctx2.fill();
+    x = myChart.scales.x.right
+    y = myChart.scales.x.top
+    ctx2.beginPath()
+    ctx2.moveTo(x+10, y)
+    ctx2.lineTo(x, y-5)
+    ctx2.lineTo(x, y+5)
+    ctx2.fill()
 }
 
 
