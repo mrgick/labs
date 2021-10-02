@@ -9,8 +9,8 @@ let dot_color = "#fff00f"
 
 let custom_dot_color = "#0000ff"
 let custom_dot = {
-    x: 201,
-    y: 201
+    x: 0,
+    y: 0
 }
 
 let forever = false
@@ -143,8 +143,12 @@ function getMousePos(canvas, evt) {
 
 window.onload = function () {
     canvas = document.getElementById("graph")
-    x_center = canvas.getAttribute("height") / 2
-    y_center = canvas.getAttribute("width") / 2
+    x_center = canvas.getAttribute("width") / 2
+    y_center = canvas.getAttribute("height") / 2
+    custom_dot = {
+        x: x_center,
+        y: y_center   
+    }
     ctx = canvas.getContext("2d")
     clear_canvas()
 
