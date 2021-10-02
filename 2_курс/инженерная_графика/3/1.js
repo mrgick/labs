@@ -8,11 +8,65 @@ let dot_color = "#fff00f"
 
 
 function auto_check() {
-    
+
 }
 
 function decompose_to_triangles() {
-    
+
+    function draw_line(p1, p2) {
+        ctx.strokeStyle = line_color
+        ctx.beginPath()
+        ctx.moveTo(p1.x, p1.y)
+        ctx.lineTo(p2.x, p2.y)
+        ctx.closePath()
+        ctx.stroke()
+    }
+
+    function determinant_of_a_matrix(p1, p2, p3) {
+
+
+        l = (p1.x * p2.y * 1) + (p2.x * p3.y * 1) + (p3.x * p1.y * 1)
+        r = (1 * p2.y * p3.x) + (1 * p3.y * p1.x) + (1 * p1.y * p2.x)
+        return (l - r)
+    }
+
+
+    if (dots_list == []) {
+        return
+    }
+
+    // обход должен быть против часовой
+    if (dots_list[1].y <= dots_list[2].y){
+        dots_list.reverse()
+    }
+
+    let i1, i2, i3, s_d = 0
+
+    for (let i = 0; i < dots_list.length; i++) {
+        i1 = i - 1
+        i2 = i
+        i3 = i + 1
+
+        if (i1 == -1) {
+            i1 = dots_list.length - 1
+        }
+
+        if (i3 == dots_list.length) {
+            i3 = 0
+        }
+
+        let D = determinant_of_a_matrix(dots_list[i1], dots_list[i2], dots_list[i3])
+        if (D > 0) {
+            console.log(i, D);
+            s_d = i
+        }
+
+    }
+    //console.log(determinant_of_a_matrix({ x: 1, y: 2 }, { x: 2, y: 3 }, { x: 4, y: 5 }));
+
+    for (let i = 0; i < dots_list.length; i++) {
+        draw_line(dots_list[s_d], dots_list[i])
+    }
 }
 
 
