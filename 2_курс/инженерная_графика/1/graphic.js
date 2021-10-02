@@ -5,7 +5,7 @@ function Graphic() {
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [0],
+            labels: ["0.00", "0.50"],
             datasets: [{
                 label: "log(x,e)",
                 data: get_data(1, 20, 0.5, 'log(x,e)'),
@@ -37,8 +37,8 @@ function Graphic() {
                     text: 'x'
                   }
                 }
-              }
-            //responsive: false
+              },
+            responsive: false
         }
     })
 
