@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>lab №2</title>
+    <script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <label> Количество точек:</label>
+            <input type="number" id="dots_number" value="4" step="1" min="4">
+            <button onclick="new_polygon()">Построить</button>
+        </div>
+        <div>
+            <button onclick="auto_check()">Авто-проверка</button>
+        </div>
+        <div>
+            <button onclick="decompose_to_triangles()">Разбить на треугольники</button>
+        </div>
+        <div>
+            <canvas id="graph" width="800" height="800" style="border:2px solid #000000;">Your browser does not
+                support the canvas element.</canvas>
+        </div>
+</body>
+
+</html>
