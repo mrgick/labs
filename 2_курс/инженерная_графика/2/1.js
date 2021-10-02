@@ -13,43 +13,36 @@ let custom_dot = {
     y: 201
 }
 
+let forever = false
+
 function new_polygon() {
-    max_dots = parseInt(document.getElementById("dots_number").value)
+    if (document.getElementById("dots_number").value == "") {
+        max_dots = 3
+    } else {
+        max_dots = parseInt(document.getElementById("dots_number").value)
+    }
     dots_list = []
     clear_canvas()
 }
 
-function cos(x) {
-    return Math.cos(x)//parseFloat(Math.cos(x).toFixed(3))
-}
-
-function sin(x) {
-    return Math.sin(x)//parseFloat(Math.sin(x).toFixed(3))
-}
-
-
-function get_new_xy(p, a) {
-    a = - a * Math.PI / 180
-    //console.log("SIN(A)=", sin(a));
-    //console.log("COS(A)=", cos(a));
-
-    //console.log(a);
-    let x = p.x - custom_dot.x
-    let y = p.y - custom_dot.y
-    //a = 1.57 //- a * Math.PI / 180
-    //console.log(x, y);
-    let new_x = ((x * cos(a)) - (y * sin(a)))
-    y = ((x * sin(a)) + (y * cos(a)))
-    //console.log(x, y);
-    return {
-        x: (new_x + custom_dot.x),
-        y: (y + custom_dot.y)
-    }
-}
-
-
 function rotate() {
-    let angle = parseInt(document.getElementById("angle_of_rotation").value)
+    function get_new_xy(p, a) {
+        a = - a * Math.PI / 180
+        let x = p.x - custom_dot.x
+        let y = p.y - custom_dot.y
+        let new_x = (x * Math.cos(a) - y * Math.sin(a))
+        y = (x * Math.sin(a) + y * Math.cos(a))
+        return {
+            x: (new_x + custom_dot.x),
+            y: (y + custom_dot.y)
+        }
+    }
+    let angle
+    if (document.getElementById("angle_of_rotation").value != "") {
+        angle = parseFloat(document.getElementById("angle_of_rotation").value)
+    } else {
+        angle = 0
+    }
     let new_dots = []
     clear_canvas()
     for (let i = 0; i < dots_list.length; i++) {
@@ -61,16 +54,15 @@ function rotate() {
     draw_polygon()
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-let forever
 async function rotate_forever() {
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     forever = true
     while (forever == true) {
         rotate()
-        await sleep(30)
+        await sleep(6)
     }
 }
 
@@ -125,7 +117,7 @@ function getMousePos(canvas, evt) {
     let rect = canvas.getBoundingClientRect()
 
     if (dots_list.length == max_dots) {
-        
+
         custom_dot = {
             x: evt.clientX - rect.left,
             y: evt.clientY - rect.top
@@ -161,7 +153,7 @@ window.onload = function () {
     }, false)
 
     let checkb = document.getElementById("rotate_forever")
-    checkb.addEventListener("change", function(e) {
+    checkb.addEventListener("change", function (e) {
         if (this.checked) {
             rotate_forever()
         } else {
