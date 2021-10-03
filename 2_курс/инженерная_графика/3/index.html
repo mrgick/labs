@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title>lab №2</title>
-    <script type="text/javascript" src="1.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="triangulate.js"></script>
+    <script type="text/javascript" src="dots_example.js"></script>
 </head>
 
 <body>
@@ -15,7 +17,13 @@
             <button onclick="new_polygon()">Построить</button>
         </div>
         <div>
-            <button onclick="auto_check()">Авто-проверка</button>
+            <label>Вариант проверки:</label>
+            <label id="varient">1</label>
+            <button onclick="draw_next_example()">></button>
+        </div>
+        <div>
+            <input type="checkbox" id="auto_check">
+            <label>Авто-проверка</label>
         </div>
         <div>
             <button onclick="decompose_to_triangles()">Разбить на треугольники</button>

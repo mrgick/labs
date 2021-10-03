@@ -6,67 +6,40 @@ let clear_color = "#ffffff"
 let line_color = "#000000"
 let dot_color = "#fff00f"
 
+let stop_check
+async function auto_check() {
+    function sleep(ms) {
+        ms += new Date().getTime();
+        while (new Date() < ms) { }
+    }
 
-function auto_check() {
+    stop_check = false
+    while (stop_check == false) {
+        draw_next_example()
+        await new Promise(r => setTimeout(r, 1000));
+        decompose_to_triangles()
+        await new Promise(r => setTimeout(r, 2000));
+    }
+}
 
+
+function draw_next_example() {
+    clear_canvas()
+    dots_list =  get_example()
+    document.getElementById("varient").innerText = examle_number
+    max_dots = dots_list.length
+    for (let i = 0; i < dots_list.length; i++) {
+        draw_dot(dots_list[i])
+    }
+    draw_polygon()
 }
 
 function decompose_to_triangles() {
-
-    function draw_line(p1, p2) {
-        ctx.strokeStyle = line_color
-        ctx.beginPath()
-        ctx.moveTo(p1.x, p1.y)
-        ctx.lineTo(p2.x, p2.y)
-        ctx.closePath()
-        ctx.stroke()
-    }
-
-    function determinant_of_a_matrix(p1, p2, p3) {
-
-
-        l = (p1.x * p2.y * 1) + (p2.x * p3.y * 1) + (p3.x * p1.y * 1)
-        r = (1 * p2.y * p3.x) + (1 * p3.y * p1.x) + (1 * p1.y * p2.x)
-        return (l - r)
-    }
-
-
-    if (dots_list == []) {
-        return
-    }
-
-    // обход должен быть против часовой
-    if (dots_list[1].y <= dots_list[2].y){
-        dots_list.reverse()
-    }
-
-    let i1, i2, i3, s_d = 0
-
+    let tmp = []
     for (let i = 0; i < dots_list.length; i++) {
-        i1 = i - 1
-        i2 = i
-        i3 = i + 1
-
-        if (i1 == -1) {
-            i1 = dots_list.length - 1
-        }
-
-        if (i3 == dots_list.length) {
-            i3 = 0
-        }
-
-        let D = determinant_of_a_matrix(dots_list[i1], dots_list[i2], dots_list[i3])
-        if (D > 0) {
-            console.log(i, D);
-            s_d = i
-        }
-
+        tmp.push(dots_list[i])
     }
-    //console.log(determinant_of_a_matrix({ x: 1, y: 2 }, { x: 2, y: 3 }, { x: 4, y: 5 }));
-
-    for (let i = 0; i < dots_list.length; i++) {
-        draw_line(dots_list[s_d], dots_list[i])
-    }
+    triangulate(tmp)
 }
 
 
@@ -100,7 +73,7 @@ function draw_dot(p, color = dot_color) {
 }
 
 function draw_polygon() {
-    console.log(dots_list)
+    //console.log(dots_list)
     ctx.strokeStyle = line_color
     ctx.beginPath()
     for (let i = 0; i < dots_list.length; i++) {
@@ -150,4 +123,12 @@ window.onload = function () {
         get_mous_pos(canvas, evt)
     })
 
+    let checkb = document.getElementById("auto_check")
+    checkb.addEventListener("change", function (e) {
+        if (this.checked) {
+            auto_check()
+        } else {
+            stop_check = true
+        }
+    })
 }
