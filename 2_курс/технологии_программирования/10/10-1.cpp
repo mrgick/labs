@@ -36,7 +36,7 @@ bool cmp_by_cnt(const Elem &lh, const Elem &rh)
     }
     else
     {
-        return lh.cnt < rh.cnt;
+        return lh.cnt > rh.cnt;
     }
 }
 // Получить очередное слово с клавиатуры и записать в str
