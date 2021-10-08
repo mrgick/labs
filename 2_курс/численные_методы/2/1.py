@@ -25,9 +25,9 @@ def main():
     step = (b - a) / 20
     while a < b:
         if f(a) * f(a + step) <= 0:
-            print(f"a={a:.{7}f} b={a+step:.{7}f}")
+            print(f"a={a:.{3}f} b={a+step:.{3}f}")
             x = half_divide(a, a + step, ε)
-            print(f"x={x:.{7}f}")
+            print(f"x={x:.{3}f}")
         a += step
 
 
