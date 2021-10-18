@@ -10,7 +10,7 @@ function main() {
         e = 10 ** -5,
         N = 2
 
-    let z = f(a) - f(b),
+    let z = f(a) + f(b),
         counter = 0,
         I_old,
         I_new = 0,
