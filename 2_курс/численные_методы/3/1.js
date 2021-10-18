@@ -3,26 +3,11 @@ function f(x) {
 }
 
 
-function method_rectangles(a, n, h, t = 0) {
-    let sum, Δ, I
-
-    switch (t) {
-        case 1:
-            Δ = h / 2
-            break;
-        case 2:
-            Δ = h
-            break;
-        default:
-            Δ = 0
-            break;
-    }
-
-    sum = 0
+function method_rectangles(a, n, h, Δ) {
+    let sum = 0
     for (let i = 1; i < n; i++) {
         sum += f(a + i * h + Δ)
     }
-
     return h * sum
 }
 
@@ -54,10 +39,10 @@ function main() {
     result = method_rectangles(a, n, h, 0)
     console.log(`Left rectangles: I = ${result.toFixed(7)}`)
 
-    result = method_rectangles(a, n, h, 1)
+    result = method_rectangles(a, n, h, h / 2)
     console.log(`Center rectangles: I = ${result.toFixed(7)}`)
 
-    result = method_rectangles(a, n, h, 2)
+    result = method_rectangles(a, n, h, h)
     console.log(`Right rectangles: I = ${result.toFixed(7)}`)
 
     result = method_trapezes(a, b, n, h)
