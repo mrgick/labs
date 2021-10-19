@@ -28,7 +28,6 @@ function sympson(b, e) {
     return I_new
 }
 
-
 function main() {
     let a = 0.2,
         b = 8,
@@ -44,12 +43,11 @@ function main() {
             b = x
         else
             a = x
-        console.log(`i = ${i} a = ${a.toFixed(4)} f(a) = ${sympson(x, e).toFixed(5)}`)
+        console.log(`i = ${i} a = ${a.toFixed(2)} f(a) = ${sympson(x, e).toFixed(5)}`)
         i++
-        e1 = 0.47 * e1
-        //console.log(e1);
+        e1 /= 2.1
     } while (Math.abs(b - a) > e)
+    console.log(`Answer: a = ${a.toFixed(2)} f(a) = ${sympson(x, e).toFixed(5)}`)
 }
-
 
 main()
