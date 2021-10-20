@@ -6,7 +6,7 @@ function main() {
         [86, 40, 35, 87]
     ],
         u2 = [1, 0, 0, 0],
-        e = 10 ** (-4),
+        e = 10 ** (-5),
         l2 = 1,
         u1, l1
 
@@ -18,9 +18,9 @@ function main() {
         u2 = normolize_vector(u2)
     } while (Math.abs(l2 - l1) > e)
 
-    console.log(`l = ${l2.toFixed(3)}\nvector=[`)
+    console.log(`l = ${l2.toFixed(5)}\nvector=[`)
     for (let i = 0; i < u2.length; i++) {
-        console.log(`        ${u2[i].toFixed(3)},`)
+        console.log(`        ${u2[i].toFixed(5)},`)
     }
     console.log('       ]');
 
