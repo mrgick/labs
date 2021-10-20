@@ -43,11 +43,11 @@ function main() {
             b = x
         else
             a = x
-        console.log(`i = ${i} a = ${a.toFixed(2)} f(a) = ${sympson(a, 10**-5).toFixed(5)}`)
+        console.log(`i = ${i} a = ${a.toFixed(2)} f(a) = ${sympson(a, e1).toFixed(5)}`)
         i++
         e1 /= 2.1
     } while (Math.abs(b - a) > e)
-    console.log(`Answer: a = ${a.toFixed(2)} f(a) = ${sympson(a, 10**-5).toFixed(5)}`)
+    console.log(`Answer: a = ${a.toFixed(2)} f(a) = ${sympson(a, e1).toFixed(5)}`)
 }
 
 main()
