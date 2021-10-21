@@ -8,10 +8,9 @@ function main() {
         x_tmp
 
 
-    while (x_min <= x_max) {
+    for (; x_min <= x_max; x_min += dx) {
         x_tmp = calc_L(x_min, x, y, n)
         console.log(`x=${x_min}, f(x)=${x_tmp.toFixed(3)}`);
-        x_min += dx
     }
 
 }
