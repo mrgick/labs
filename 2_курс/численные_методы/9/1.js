@@ -52,15 +52,15 @@ function calculate_sg(y_new, y_old) {
     let sg = []
     for (i = 0; i < 8; i++) {
         sg[i] = y_old[i] - y_new[i]
-        console.log(`i=${i} P=${y_new[i].toFixed(3)} sg=${sg[i].toFixed(3)}`)
+        console.log(`i=${i+1} P=${y_new[i].toFixed(3)} sg=${sg[i].toFixed(3)}`)
     }
 }
 
 
 function main() {
 
-    let x = [0.77, 0.9, 0.94, 0.96, 0.99, 1, 1.17, 1.3, 3],
-        y = [11.6, 7.3, 3.1, 1.7, 0.3, -0.1, -2.6, 0.5, 3],
+    let x = [0.77, 0.9, 0.94, 0.96, 0.99, 1, 1.17, 1.3],
+        y = [11.6, 7.3, 3.1, 1.7, 0.3, -0.1, -2.6, 0.5],
         a = [],
         b = [],
         m = 4,
