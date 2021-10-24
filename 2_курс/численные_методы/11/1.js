@@ -33,9 +33,8 @@ function main() {
     } while (x[3] <= x_end)
 
     for (key in res) {
-        console.log(`${parseFloat(key).toFixed(2)}:${res[key].toFixed(4)}`);
+        console.log(`x=${parseFloat(key).toFixed(2)}, y=${res[key].toFixed(6)}`)
     }
-
 }
 
 function f(x, y) {
