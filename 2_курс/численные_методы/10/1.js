@@ -1,4 +1,3 @@
-
 function main() {
     let y_start = 11 / 9,
         x_start = 0,
@@ -17,7 +16,7 @@ function main() {
         k[3] = h * f(x + h / 2, y[i] + k[2] / 2)
         k[4] = h * f(x + h, y[i] + k[3])
         y[i + 1] = y[i] + (k[1] + 2 * k[2] + 2 * k[3] + k[4]) / 6
-        console.log(`x=${x.toFixed(2)}, y=${y[i].toFixed(4)}`)
+        console.log(`x=${x.toFixed(2)}, y=${y[i].toFixed(6)}`)
         x += h
     }
 
