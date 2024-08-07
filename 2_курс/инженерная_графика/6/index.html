@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>lab №6</title>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/draw.js"></script>
+</head>
+
+<body>
+    <div>
+        <label>Step:</label>
+        <br>
+        <label for="">x =</label>
+        <input type="number" id="x_step" value="0.01" min="0.001" step="0.001">
+        <label for="">z =</label>
+        <input type="number" id="z_step" value="0.1" min="0.001" step="0.001">
+        <br>
+        <label for="">delay =</label>
+        <input type="number" id="delay_num" value="0" step="10" min="0">
+        <br>
+        <label>Color:</label>
+        <br>
+        <label for="">hex =</label>
+        <input type="text" id="color_hex" value="FFFFFF">
+        <label for="">step =</label>
+        <input type="number" id="color_st" value="-10" step="1">
+        <br>
+        <button onclick="create()">create</button>
+    </div>
+    <br>
+    <div>
+        <canvas id="plain" width="500" height="500">Your browser does not
+            support the canvas element.</canvas>
+    </div>
+</body>
+
+</html>
