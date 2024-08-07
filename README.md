@@ -10,8 +10,9 @@
 2. [Лабораторная работа по js](https://github.com/mrgick/labs/tree/main/3_курс/js_lab)
 3. [Лабораторная работа по React](https://github.com/mrgick/react_js_tutor_2022)
 4. [Лабораторные работы по Python](https://github.com/mrgick/python_study_2022)
+5. [Лабораторные работы по Django](https://github.com/mrgick/web-course)
 * 2023 год, 4 курс
 1. [Проект по проектированию систем](https://github.com/mrgick/game_records)
-2. [Лабораторные работы по Django](https://github.com/mrgick/web-course)
-3. [Курсовой проект по Django](https://github.com/mrgick/table_games_shop)
-4. [Мобильные приложения](https://github.com/mrgick/mobile_apps)
+2. [Курсовой проект по Django](https://github.com/mrgick/table_games_shop)
+3. [Мобильные приложения](https://github.com/mrgick/mobile_apps)
+4. [Лабораторные работы по защите данных](https://github.com/mrgick/labs/tree/main/4_курс/algroritms)
