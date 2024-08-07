@@ -1,0 +1,147 @@
+body, p, td
+{
+	color: black;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+div.content {
+    font-size: 12pt; 
+}
+
+div.content ul {
+	margin-left: 25pt;
+	list-style-type: disc;
+}
+
+div.content ul  ul {
+	margin-left: 15pt;
+	list-style-type: circle;
+}
+
+
+div.content a, div.content a:hover, div.content a:visited, div.content a:active {
+    color: #330066;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+
+
+
+div.head div.title {
+    color: #330066;
+    font-size: 20pt;
+	font-weight: bold;
+}
+
+h1 {
+    color: blue;
+    font-size: 18pt;
+}
+
+
+h2 {
+    font-size: 16pt;
+    color: #330066;
+}
+
+h3 {
+    font-size: 14pt;
+    color: #330066;
+}
+
+
+h4,h5,h6 {
+    font-size: 12pt;
+    color: #330066;
+}
+
+div.text {
+    font-size: 10pt;
+}
+
+span.lection_name {
+	color: black;
+}
+
+div.annotation {
+	font-style: oblique;
+	padding-top: 0px; 
+	margin-top: 2px;
+	margin-left: 6px;
+}
+
+
+span.vector {
+    border-top: solid #8B0000 1px;
+    margin-top: 2px;
+}
+
+.xml_em_italic {
+	font-style: italic;
+}
+
+.xml_em_bold {
+    font-weight: bold;
+}
+
+.xml_em_proposition {
+	font-style: italic;
+}
+
+.objectName {
+    color: #330066;
+    font-weight: bold;
+    font-size:8pt;
+}
+a.objectName, a.objectName:hover, a.objectName:visited, a.objectName:active {
+    color: #330066;
+    font-weight: bold;
+    font-size:8pt; 
+    text-decoration:underline;
+}
+
+.xml_quote_author {
+	text-align: right;
+	font-style: italic;
+}
+
+.example 
+    {
+    margin-left:10px;
+    color:#8B0000;
+    font-family:monospace;
+    font-size:10pt;
+    text-align:left
+    }
+.bexample
+    {
+    color:#8B0000;
+    font-family:monospace;
+    font-size:10pt;
+    text-align:left;
+    font-weight: bold;      
+    }
+.iexample
+    {
+    color:#8B0000;
+    font-family:monospace;
+    font-size:10pt;
+    text-align:left;
+    font-style: italic;
+    }
+.texample
+    {
+    color:#8B0000;
+    font-family:monospace;
+    text-align:left;
+    }       
+
+.keyword {
+    font-style: oblique;
+}
+
+.keyword_def {
+    font-style: oblique;
+    font-weight: bold;
+}
