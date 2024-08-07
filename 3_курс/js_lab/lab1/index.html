@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.1.1/math.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="calculator_input_div">
+            <input type="text" id="calculator_input">
+        </div>
+        <div class="calculator_btns_div">
+            <div class="calculator_btns_row">
+                <button class="btn_manipulator" onclick="write_text('', true);">C</button>
+                <button class="btn_manipulator" onclick="write_text('', false, true);">⌫</button>
+                <button class="calc_equals" onclick="count_expression();">=</button>
+            </div>
+            <div class="calculator_btns_row">
+                <button onclick="write_text('(');">(</button>
+                <button onclick="write_text(')');">)</button>
+                <button onclick="write_text('sqrt(');">√</button>
+                <button onclick="write_text('^2');">x<sup>2</sup></button>
+                <button onclick="write_text('^');">x<sup>y</sup></button>
+                <button onclick="write_text('^-1');">x<sup>-1</sup></button>
+            </div>
+            <div class="calculator_btns_row">
+                <button onclick="write_text('7');">7</button>
+                <button onclick="write_text('8');">8</button>
+                <button onclick="write_text('9');">9</button>
+                <button onclick="write_text('/');">/</button>
+                <button id="logarithm" onclick="write_text('log(');">log</button>
+                <button onclick="write_text('^3');">x<sup>3</sup></button>
+            </div>
+            <div class="calculator_btns_row">
+                <button onclick="write_text('4');">4</button>
+                <button onclick="write_text('5');">5</button>
+                <button onclick="write_text('6');">6</button>
+                <button onclick="write_text('*');">*</button>
+                <button class="trigonometry" onclick="write_text('sin(');">sin</button>
+                <button onclick="write_text('!');">x!</button>
+            </div>
+            <div class="calculator_btns_row">
+                <button onclick="write_text('1');">1</button>
+                <button onclick="write_text('2');">2</button>
+                <button onclick="write_text('3');">3</button>
+                <button onclick="write_text('-');">-</button>
+                <button class="trigonometry" onclick="write_text('cos(');">cos</button>
+                <button onclick="write_text('E^');">e<sup>x</sup></button>
+            </div>
+            <div class="calculator_btns_row">
+                <button onclick="write_text('0');">0</button>
+                <button onclick="write_text('.');">.</button>
+                <button onclick="write_text('%');">%</button>
+                <button onclick="write_text('+');">+</button>
+                <button class="trigonometry" onclick="write_text('cos(');">tan</button>
+                <button onclick="write_text('abs(');">abs</button>
+            </div>
+            <div class="calculator_btns_row">
+                <button onclick="write_text('PI');">π</button>
+                <button onclick="write_text('E');">e</button>
+                <button onclick="write_text('phi');">Φ</button>
+                <button onclick="write_text('deg');">°</button>
+                <button class="btn_manipulator" onclick="change_func_trig_and_log();">↑↓</button>
+                <button onclick="write_text('i');">i</button>
+            </div>
+        </div>
+        <div class="calculator_footer_div">
+            <p>This calculator created with <a href="https://mathjs.org/">Mathjs</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
